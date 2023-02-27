@@ -1,0 +1,23 @@
+{
+  "default": {
+    "publishQuiet": true,
+    "publish": false,
+    "require": [
+      "src/features/**/*.js",
+      "src/framework/**/*.js"
+    ],
+    "paths": [
+      "src/features/865btuak2.feature"
+    ],
+    "tags": "",
+    "strict": true,
+    "retry": 0,
+    "failFast": false,
+    "forceExit": false,
+    "backtrace": true,
+    "format": [
+      "progress",
+      "json:test-reports/results/reports.json"
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+node_modules
+.idea
+test-reports/*.json
+test-reports/*.html
+package-lock.json
