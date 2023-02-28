@@ -16,8 +16,11 @@
     "forceExit": false,
     "backtrace": true,
     "format": [
-      "progress",
+      "@cucumber/pretty-formatter",
       "json:test-reports/results/reports.json"
-    ]
+    ],
+    "formatOptions": {
+      "colorsEnabled": true
+    }
   }
 }

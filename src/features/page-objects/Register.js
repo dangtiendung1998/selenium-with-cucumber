@@ -11,7 +11,8 @@ class Register extends BasePage {
         this.signUpLink = () => new HtmlElement(By.css('a[href="/signup"]'))
         this.formTitle = () => new HtmlElement(By.xpath('//h1[contains(text(), "Create a new account")]'))
         this.emailInput = () => new Input(By.css('input[name=email]'));
-        this.fullNameInput = () => new Input(By.css('input[name=fullName]'));
+        this.firstnameInput = () => new Input(By.css('input[name=firstName]'));
+        this.lastnameInput = () => new Input(By.css('input[name=lastName]'));
         this.passwordInput = () => new Input(By.css('input[name=password]'));
         this.confirmPasswordInput = () => new Input(By.css('input[name=confirmPassword]'));
         this.submitButton = () => new Input(By.css('button[type=submit]'));
@@ -32,11 +33,13 @@ class Register extends BasePage {
         expect(isDisplayed).to.be.true;
     }
 
-    async enterNewAccount(email, fullName, password, confirmPassword) {
+    async enterNewAccount(email, firstname, lastname, password, confirmPassword) {
         await this.emailInput().waitForElementVisible();
         await this.emailInput().type(email);
-        await this.fullNameInput().waitForElementVisible();
-        await this.fullNameInput().type(fullName);
+        await this.firstnameInput().waitForElementVisible();
+        await this.firstnameInput().type(firstname);
+        await this.lastnameInput().waitForElementVisible();
+        await this.lastnameInput().type(lastname);
         await this.passwordInput().waitForElementVisible();
         await this.passwordInput().type(password);
         await this.confirmPasswordInput().waitForElementVisible();
@@ -46,6 +49,7 @@ class Register extends BasePage {
     async clickSubmitBtn() {
         await this.submitButton().waitForElementVisible();
         await this.submitButton().click();
+        await getDriver().sleep(5000);
     }
 
     async verifyLoginPageDisplayed() {
@@ -60,7 +64,7 @@ class Register extends BasePage {
     }
 
     async verifyLoginSuccess() {
-        await getDriver().sleep(1000);
+        await getDriver().sleep(10000);
     }
 }
 

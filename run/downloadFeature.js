@@ -16,7 +16,7 @@ const config = {
 const taskId = '865bt8v9x';
 
 
-// get test plan
+console.log('=>>>>Start download feature')
 axios.get(`https://api.clickup.com/api/v2/task/${taskId}?${query}`, config).then(async (response) => {
     // const {subtasks} = response.data
     for (const feature of response.data.subtasks) {
@@ -26,8 +26,10 @@ axios.get(`https://api.clickup.com/api/v2/task/${taskId}?${query}`, config).then
             str += detail['data']['name'] + '\n' + detail['data']['text_content'] + '\n';
         }
         console.log(str)
-        fs.writeFile("../src/features/" + feature['id'].replace(/\s/g, '-') + '.feature', str, "utf8", (error, data) => {
+        fs.writeFile("./src/features/" + feature['id'].replace(/\s/g, '-') + '.feature', str, "utf8", (error, data) => {
         });
     }
+}).then(() => {
+    console.log('=>>> Download feature successfully')
 })
 

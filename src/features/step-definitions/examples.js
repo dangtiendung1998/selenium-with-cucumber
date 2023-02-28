@@ -13,10 +13,10 @@ Then('Sign up form is displayed with title "{}"', async function (title) {
     await Register.verifyPageTitle(title)
 })
 
-When('User enter valid information in the fields: Email {string}, Full Name {string}, Password {string}, Confirm password {string}', async function (
-    email, fullName, password, confirmPassword
+When('User enter valid information in the fields: Email {fakeEmail}, firstname {string}, lastname {string}, Password {string}, Confirm password {string}', async function (
+    email, firstname, lastname, password, confirmPassword
 ) {
-    await Register.enterNewAccount(email, fullName, password, confirmPassword);
+    await Register.enterNewAccount(email, firstname, lastname, password, confirmPassword);
 })
 
 When('User click on "Sign up" button', async function () {
@@ -27,7 +27,7 @@ Then('Log in page is displayed', async function () {
     await Register.verifyLoginPageDisplayed();
 })
 
-Then('User enter email {string} and password {string}', async function(email, password) {
+Then('User enter email {fakeEmail} and password {string}', async function(email, password) {
     await Register.enterSignIn(email, password)
 })
 

@@ -49,6 +49,28 @@ defineParameterType({
     useForSnippets: false
 });
 
+defineParameterType({
+    regexp: /"([^"]*)"/,
+    transformer: function (str) {
+        if (typeof str === "string") {
+            if (dataPool[str]) {
+                console.log('fake email: ', dataPool[str]);
+                return dataPool[str];
+            }
+            const email = str.split('@');
+            const prefixEmail = email[0];
+            const suffixes = email[1];
+            const timestamp = Date.now();
+            dataPool[str] = `${prefixEmail}-${timestamp}@${suffixes}`;
+            console.log('fake email: ', dataPool[str]);
+            return dataPool[str];
+        }
+        return str;
+    },
+    name: "fakeEmail",
+    useForSnippets: false
+});
+
 module.exports = {
     fakeStringTransformer: function (str, verify = false) {
         if (typeof str === "string") {

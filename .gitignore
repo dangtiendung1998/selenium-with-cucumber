@@ -3,3 +3,4 @@ node_modules
 test-reports/*.json
 test-reports/*.html
 package-lock.json
+src/features/*.feature
